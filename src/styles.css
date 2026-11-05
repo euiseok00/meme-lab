@@ -1,0 +1,253 @@
+* { box-sizing: border-box; margin: 0; }
+
+:root {
+  --navy: #1f2d5c;
+  --ink: #1b1d23;
+  --muted: #6b7180;
+  --line: #e2e4ea;
+  --bg: #f6f7f9;
+  font-family: 'Pretendard', -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-text-size-adjust: 100%;
+}
+
+body { min-height: 100dvh; }
+
+button, textarea, input { font: inherit; }
+
+.page {
+  max-width: 420px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  padding: 32px 22px calc(32px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.center { text-align: center; }
+.muted { color: var(--muted); font-size: 14px; line-height: 1.6; }
+.sub { font-size: 17px; margin-top: 24px; }
+
+/* 기관 헤더 */
+.inst {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+  color: #333a4a;
+}
+.inst strong { display: block; font-size: 18px; letter-spacing: -0.3px; color: var(--ink); }
+.inst small { font-size: 10.5px; color: var(--muted); }
+
+.headline {
+  text-align: center;
+  font-size: 27px;
+  line-height: 1.38;
+  letter-spacing: -0.5px;
+  margin: 24px 0 8px;
+}
+.headline.small { font-size: 22px; margin-top: 4px; }
+
+.info {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 14px 8px;
+  padding: 18px 20px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 14px;
+  margin: 10px 0;
+}
+.info dt { color: var(--muted); }
+
+/* 버튼 */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 52px;
+  border: 0;
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn.dark { background: #232836; color: #fff; }
+.btn.kakao { background: #fee500; color: #191919; }
+.btn.white { background: #fff; color: #111; border-radius: 999px; }
+.btn:focus-visible, .big-btn:focus-visible, textarea:focus-visible { outline: 3px solid #5b8cff; outline-offset: 2px; }
+
+.talk {
+  background: #3a1d1d;
+  color: #fee500;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 6px;
+  border-radius: 50%;
+}
+
+/* 생성 */
+.lab-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 24px;
+  margin-top: 16px;
+}
+.label { font-weight: 700; font-size: 15px; margin-top: 10px; }
+textarea {
+  height: 90px;
+  resize: none;
+  padding: 14px;
+  border: 1px solid #cfd3dc;
+  border-radius: 10px;
+  background: #fff;
+  font-size: 16px; /* 16px+ prevents iOS zoom on focus */
+}
+.count { text-align: right; font-size: 13px; color: var(--muted); margin-top: -8px; }
+.preview {
+  background: #252a36;
+  color: #fff;
+  border-radius: 10px;
+  padding: 18px;
+  text-align: center;
+}
+.preview small { color: #b9becb; font-size: 12px; }
+.preview p { margin-top: 10px; font-size: 17px; font-weight: 600; word-break: keep-all; }
+.url {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 13px;
+  background: #fff;
+}
+.warn { font-size: 12px; color: #9a9fab; text-align: center; margin-top: 4px; }
+
+/* 검증 */
+.counter { text-align: center; font-size: 52px; font-weight: 800; color: var(--ink); }
+.counter span { color: #9aa0ad; font-weight: 400; }
+.bar { height: 14px; border-radius: 99px; background: #e4e6ec; overflow: hidden; }
+.fill { height: 100%; background: var(--navy); border-radius: 99px; transition: width 0.3s ease; }
+.fill-load { animation: load 1.2s ease-out both; }
+@keyframes load { from { width: 0; } to { width: 100%; } }
+
+.phrase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  background: #eceef3;
+  border-radius: 8px;
+  color: #3c4252;
+  font-size: 16px;
+}
+.big-btn {
+  align-self: center;
+  width: 150px;
+  height: 150px;
+  margin-top: 36px;
+  border-radius: 50%;
+  border: 8px solid #fff;
+  background: radial-gradient(circle at 35% 30%, #34477f, var(--navy));
+  color: #fff;
+  font-size: 26px;
+  font-weight: 700;
+  box-shadow: 0 10px 30px rgba(31, 45, 92, 0.35), 0 0 0 1px var(--line);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: transform 0.08s;
+}
+.big-btn:active { transform: scale(0.94); }
+.big-btn:disabled { opacity: 0.6; }
+
+.check {
+  align-self: center;
+  width: 72px;
+  height: 72px;
+  margin-top: 16px;
+  border-radius: 50%;
+  background: #e8eaf0;
+  color: var(--navy);
+  display: grid;
+  place-items: center;
+}
+
+/* 결과 */
+.result {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #07040f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 20px;
+}
+.burst {
+  position: absolute;
+  inset: -50%;
+  background: repeating-conic-gradient(from 0deg, rgba(120, 60, 255, 0.22) 0 3deg, transparent 3deg 14deg);
+  mask: radial-gradient(circle, transparent 12%, #000 60%);
+  animation: spin 8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.memes { position: absolute; inset: 0; pointer-events: none; }
+.meme {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 900;
+  white-space: nowrap;
+  text-shadow: 0 0 8px currentColor, 0 0 22px currentColor;
+  will-change: transform;
+  animation: roam 1s ease-in-out infinite alternate;
+}
+@keyframes roam {
+  0%   { transform: translate(var(--x0), var(--y0)) rotate(var(--r0)) scale(var(--s0)); }
+  50%  { transform: translate(var(--x1), var(--y1)) rotate(var(--r1)) scale(var(--s1)); }
+  100% { transform: translate(var(--x2), var(--y2)) rotate(var(--r2)) scale(var(--s2)); }
+}
+
+/* 메시지는 밈 위에 불투명 배경으로 고정 → 항상 선명 */
+.message {
+  position: relative;
+  z-index: 10;
+  width: min(90vw, 380px);
+  padding: 28px 22px;
+  border-radius: 22px;
+  background: #0d0b1c;
+  border: 4px solid #ffe14d;
+  box-shadow: 0 0 18px #ffe14d, inset 0 0 14px rgba(255, 225, 77, 0.35);
+  color: #fff;
+  text-align: center;
+  font-size: clamp(24px, 7.5vw, 34px);
+  font-weight: 800;
+  line-height: 1.35;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  animation: pop 0.35s cubic-bezier(0.2, 1.6, 0.4, 1) both;
+}
+@keyframes pop { from { transform: scale(0.3); opacity: 0; } }
+
+.again { position: relative; z-index: 10; width: min(70vw, 260px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .meme { animation-duration: 6s !important; }
+  .burst { animation: none; }
+}
